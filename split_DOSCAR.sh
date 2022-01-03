@@ -32,8 +32,8 @@ for iion in `seq $nions`; do
     nlines=`sed -n "${pt}p" ${f} | awk '{print $3}'`
     sed -n "${pt}p" ${f} >> ${f}_UP
     sed -n "${pt}p" ${f} >> ${f}_DOWN
-    sed -n "$((pt+1)),$((pt+nlines))p" ${f} | sed -r 's/( +0\.[0-9]+E[+-][0-9]+)( +0\.[0-9]+E[+-][0-9]+)/\1/g' >> ${f}_UP
-    sed -n "$((pt+1)),$((pt+nlines))p" ${f} | sed -r 's/( +0\.[0-9]+E[+-][0-9]+)( +0\.[0-9]+E[+-][0-9]+)/\2/g' >> ${f}_DOWN
+    sed -n "$((pt+1)),$((pt+nlines))p" ${f} | sed -r 's/( +-?0\.[0-9]+E[+-][0-9]+)( +-?0\.[0-9]+E[+-][0-9]+)/\1/g' >> ${f}_UP
+    sed -n "$((pt+1)),$((pt+nlines))p" ${f} | sed -r 's/( +-?0\.[0-9]+E[+-][0-9]+)( +-?0\.[0-9]+E[+-][0-9]+)/\2/g' >> ${f}_DOWN
     pt=$((pt+nlines+1))
 done
 
